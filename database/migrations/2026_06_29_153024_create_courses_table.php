@@ -10,12 +10,30 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('courses', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+{
+    Schema::create('courses', function (Blueprint $table) {
+        $table->id();
+
+        $table->foreignId('semester_id')
+              ->constrained()
+              ->onDelete('cascade');
+
+        $table->string('code');
+        $table->string('name');
+
+        $table->enum('day', [
+            'Senin',
+            'Selasa',
+            'Rabu',
+            'Kamis',
+            'Jumat',
+            'Sabtu',
+            'Minggu'
+        ]);
+
+        $table->timestamps();
+    });
+}
 
     /**
      * Reverse the migrations.
