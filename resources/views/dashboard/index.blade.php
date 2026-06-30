@@ -2,86 +2,32 @@
 
 @section('content')
 
-<header class="header">
+<div class="dashboard">
 
-    <div class="logo">
-        📚 Study Planner
-    </div>
+    @include('components.sidebar')
 
-    <button class="btn-add-course">
-        + Tambah Mata Kuliah
-    </button>
+    <main class="main-content">
 
-</header>
+        @include('components.topbar')
 
-<section class="semester">
+        @if(session('success'))
 
-    <h2>Semester 4</h2>
+<div class="alert-success">
 
-</section>
+    {{ session('success') }}
 
-<section class="days">
+</div>
 
-    <div class="day-column">
+@endif
 
-        <h3>Senin</h3>
+        @include('components.statistics')
 
-        <div class="course-card">
+        @include('components.course-form')
 
-            <h4>IF204</h4>
+        @include('components.schedule')
 
-            <p>Pemrograman Web</p>
+    </main>
 
-            <ul>
-
-                <li>CRUD Laravel</li>
-
-                <li>Routing Laravel</li>
-
-            </ul>
-
-            <button>+ Tambah Tugas</button>
-
-        </div>
-
-    </div>
-
-    <div class="day-column">
-
-        <h3>Selasa</h3>
-
-    </div>
-
-    <div class="day-column">
-
-        <h3>Rabu</h3>
-
-    </div>
-
-    <div class="day-column">
-
-        <h3>Kamis</h3>
-
-    </div>
-
-    <div class="day-column">
-
-        <h3>Jumat</h3>
-
-    </div>
-
-    <div class="day-column">
-
-        <h3>Sabtu</h3>
-
-    </div>
-
-    <div class="day-column">
-
-        <h3>Minggu</h3>
-
-    </div>
-
-</section>
+</div>
 
 @endsection

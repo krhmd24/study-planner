@@ -8,9 +8,9 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $semester = Semester::where('is_active', true)
-                            ->with('courses.tasks')
-                            ->first();
+        $semester = Semester::with('courses.tasks')
+            ->where('is_active', true)
+            ->first();
 
         return view('dashboard.index', compact('semester'));
     }
